@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.androidall">
+
+    // permission for bluetooth
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    //permission for camera
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    //permission for internet
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.TransitionsActivity1" />
+        <activity android:name=".activity.TransitionsActivity2" />
+        <activity android:name=".animation.AnimationActivity" />
+        <activity android:name=".animation.MoveActivity" />
+        <activity android:name=".bluetooth.BluetoothActivity" />
+        <activity android:name=".camera.MyCamAppActivity" />
+        <activity android:name=".intent.IntentActivity" />
+        <activity android:name=".intent.MySmsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <action android:name="com.example.javacodegeeks.SMS_INTENT" />
+                <action android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="smsto" />   //mailto
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".broadcast_reciever.MyBroadcastReciever">
+            <intent-filter>
+                <action android:name="com.example.androidall.android.A_CUSTOM_INTENT">
+
+                </action>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:authorities="com.javacodegeeks.provider.Birthday"
+            android:name=".content_provider.BirthdayProvider">
+
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/activity_menu"
+        android:title="activity" />
+
+    <item
+        android:id="@+id/animation_menu"
+        android:title="animation" />
+
+    <item
+        android:id="@+id/bluetooth_menu"
+        android:title="bluetooth" />
+
+    <item
+        android:id="@+id/broadcast_menu"
+        android:title="Broadcast" />
+
+    <item
+        android:id="@+id/content_menu"
+        android:title="content_provider" />
+
+    <item
+        android:id="@+id/camera_menu"
+        android:title="Camera" />
+
+    <item
+        android:id="@+id/intent_menu"
+        android:title="Intent" />
+
+
+</menu>

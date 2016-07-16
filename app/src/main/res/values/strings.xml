@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Android All</string>
+
+    <string name="hello">Hello World, MovieSearchAppActivity!</string>
+
+    <string name="search">Search</string>
+    <string name="movies">Movies</string>
+    <string name="people">People</string>
+
+    //bluetooth
+    <string name="Text">Status: -</string>
+    <string name="on">Turn On</string>
+    <string name="off">Turn Off</string>
+    <string name="List">List paired Devices</string>
+    <string name="Find">Search new Devices / Cancel</string>
+
+    //broadcast
+    <string name="sendMessage">Write a message to broadcast!</string>
+    <string name="myBroadcastIntent">Broadcast an Intent now...</string>
+
+    //intent
+    <string name="number">Write a phone number</string>
+    <string name="sms1">Send sms with SENDTO</string>
+    <string name="sms2">Send sms with SMS_INTENT</string>
+    <string name="exception">Exception Condition</string>
+
+    //content provider
+    <string name="birthday">Birthday</string>
+    <string name="name">Name</string>
+    <string name="add">Add a new Birthday</string>
+    <string name="show">Show all Birthdays</string>
+    <string name="delete">Delete all Birthdays</string>
+</resources>
