@@ -2,31 +2,43 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/activity_menu"
-        android:title="activity" />
+        android:title="@string/activity" />
 
     <item
         android:id="@+id/animation_menu"
-        android:title="animation" />
+        android:title="@string/animation" />
 
     <item
         android:id="@+id/bluetooth_menu"
-        android:title="bluetooth" />
+        android:title="@string/bluetooth" />
 
     <item
         android:id="@+id/broadcast_menu"
-        android:title="Broadcast" />
+        android:title="@string/broadcast" />
 
     <item
         android:id="@+id/content_menu"
-        android:title="content_provider" />
+        android:title="@string/content_provider" />
+
+    <!--<item-->
+    <!--android:id="@+id/camera_menu"-->
+    <!--android:title="Camera" />-->
+
+    <!--<item-->
+    <!--android:id="@+id/intent_menu"-->
+    <!--android:title="Intent" />-->
 
     <item
-        android:id="@+id/camera_menu"
-        android:title="Camera" />
+        android:id="@+id/savedprefrences_menu"
+        android:title="@string/savedprefrences" />
 
     <item
-        android:id="@+id/intent_menu"
-        android:title="Intent" />
+        android:id="@+id/sqlite_menu"
+        android:title="@string/sqlite" />
+
+    <item
+        android:id="@+id/gridview_menu"
+        android:title="@string/gridview" />
 
 
 </menu>

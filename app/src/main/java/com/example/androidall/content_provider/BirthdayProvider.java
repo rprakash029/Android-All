@@ -21,7 +21,7 @@ import java.util.HashMap;
  */
 public class BirthdayProvider extends ContentProvider {
     // fields for my content provider
-    static final String PROVIDER_NAME = "com.javacodegeeks.provider.Birthday";
+    static final String PROVIDER_NAME = "com.example.androidall.content_provider.BirthdayProvider";
     static final String URL = "content://" + PROVIDER_NAME + "/friends";
     static final Uri CONTENT_URI = Uri.parse(URL);
 
@@ -33,22 +33,8 @@ public class BirthdayProvider extends ContentProvider {
     // integer values used in content URI
     static final int FRIENDS = 1;
     static final int FRIENDS_ID = 2;
-
-    DBHelper dbHelper;
-
-    // projection map for a query
-    private static HashMap<String, String> BirthMap;
-
     // maps content URI "patterns" to the integer values that were set above
     static final UriMatcher uriMatcher;
-    static{
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "friends", FRIENDS);
-        uriMatcher.addURI(PROVIDER_NAME, "friends/#", FRIENDS_ID);
-    }
-
-    // database declarations
-    private SQLiteDatabase database;
     static final String DATABASE_NAME = "BirthdayReminder";
     static final String TABLE_NAME = "birthTable";
     static final int DATABASE_VERSION = 1;
@@ -57,33 +43,18 @@ public class BirthdayProvider extends ContentProvider {
                     " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " name TEXT NOT NULL, " +
                     " birthday TEXT NOT NULL);";
+    // projection map for a query
+    private static HashMap<String, String> BirthMap;
 
-
-    // class that creates and manages the provider's database
-    private static class DBHelper extends SQLiteOpenHelper {
-
-        public DBHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-            // TODO Auto-generated constructor stub
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            // TODO Auto-generated method stub
-            db.execSQL(CREATE_TABLE);
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            // TODO Auto-generated method stub
-            Log.w(DBHelper.class.getName(),
-                    "Upgrading database from version " + oldVersion + " to "
-                            + newVersion + ". Old data will be destroyed");
-            db.execSQL("DROP TABLE IF EXISTS " +  TABLE_NAME);
-            onCreate(db);
-        }
-
+    static{
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(PROVIDER_NAME, "friends", FRIENDS);
+        uriMatcher.addURI(PROVIDER_NAME, "friends/#", FRIENDS_ID);
     }
+
+    DBHelper dbHelper;
+    // database declarations
+    private SQLiteDatabase database;
 
     @Override
     public boolean onCreate() {
@@ -93,10 +64,7 @@ public class BirthdayProvider extends ContentProvider {
         // permissions to be writable
         database = dbHelper.getWritableDatabase();
 
-        if(database == null)
-            return false;
-        else
-            return true;
+        return database != null;
     }
 
     @Override
@@ -113,12 +81,12 @@ public class BirthdayProvider extends ContentProvider {
                 queryBuilder.setProjectionMap(BirthMap);
                 break;
             case FRIENDS_ID:
-                queryBuilder.appendWhere( ID + "=" + uri.getLastPathSegment());
+                queryBuilder.appendWhere(ID + "=" + uri.getLastPathSegment());
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
-        if (sortOrder == null || sortOrder == ""){
+        if (sortOrder == null || sortOrder == "") {
             // No sorting-> sort on names by default
             sortOrder = NAME;
         }
@@ -138,7 +106,7 @@ public class BirthdayProvider extends ContentProvider {
         long row = database.insert(TABLE_NAME, "", values);
 
         // If record is added successfully
-        if(row > 0) {
+        if (row > 0) {
             Uri newUri = ContentUris.withAppendedId(CONTENT_URI, row);
             getContext().getContentResolver().notifyChange(newUri, null);
             return newUri;
@@ -152,7 +120,7 @@ public class BirthdayProvider extends ContentProvider {
         // TODO Auto-generated method stub
         int count = 0;
 
-        switch (uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case FRIENDS:
                 count = database.update(TABLE_NAME, values, selection, selectionArgs);
                 break;
@@ -163,7 +131,7 @@ public class BirthdayProvider extends ContentProvider {
                                 selection + ')' : ""), selectionArgs);
                 break;
             default:
-                throw new IllegalArgumentException("Unsupported URI " + uri );
+                throw new IllegalArgumentException("Unsupported URI " + uri);
         }
         getContext().getContentResolver().notifyChange(uri, null);
         return count;
@@ -180,8 +148,8 @@ public class BirthdayProvider extends ContentProvider {
                 count = database.delete(TABLE_NAME, selection, selectionArgs);
                 break;
             case FRIENDS_ID:
-                String id = uri.getLastPathSegment();	//gets the id
-                count = database.delete( TABLE_NAME, ID +  " = " + id +
+                String id = uri.getLastPathSegment();    //gets the id
+                count = database.delete(TABLE_NAME, ID + " = " + id +
                         (!TextUtils.isEmpty(selection) ? " AND (" +
                                 selection + ')' : ""), selectionArgs);
                 break;
@@ -208,6 +176,32 @@ public class BirthdayProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
+    }
+
+    // class that creates and manages the provider's database
+    private static class DBHelper extends SQLiteOpenHelper {
+
+        public DBHelper(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            // TODO Auto-generated constructor stub
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            // TODO Auto-generated method stub
+            db.execSQL(CREATE_TABLE);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // TODO Auto-generated method stub
+            Log.w(DBHelper.class.getName(),
+                    "Upgrading database from version " + oldVersion + " to "
+                            + newVersion + ". Old data will be destroyed");
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+            onCreate(db);
+        }
+
     }
 
 

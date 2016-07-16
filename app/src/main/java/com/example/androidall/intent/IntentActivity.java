@@ -15,51 +15,57 @@ import com.example.androidall.R;
  */
 public class IntentActivity extends AppCompatActivity {
     private EditText edit;
-
+    private Button sms1, sms2, exception;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_intent);
 
         edit = (EditText) findViewById(R.id.recipient);
-
+        layoutPrefrences();
         // Use ACTION_SENDTO action with correct data
-        Button sms1 = (Button) findViewById(R.id.sendto_sms);
+        sms1 = (Button) findViewById(R.id.sendto_sms);
+
+        // Use our custom SMS_INTENT intent with correct data
+        sms2 = (Button) findViewById(R.id.smsintent_sms);
+
+        // Use our custom SMS_INTENT intent with incorrect data
+        exception = (Button) findViewById(R.id.exception);
+
+
+    }
+
+
+    private void layoutPrefrences() {
         sms1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String uri = "smsto:" +  edit.getText().toString();
+                String uri = "smsto:" + edit.getText().toString();
                 Intent i = new Intent(android.content.Intent.ACTION_SENDTO,
                         Uri.parse(uri));
                 startActivity(i);
             }
         });
 
-        // Use our custom SMS_INTENT intent with correct data
-        Button sms2 = (Button) findViewById(R.id.smsintent_sms);
         sms2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String uri = "smsto:" + edit.getText().toString();
-                Intent i = new Intent("com.example.javacodegeeks.SMS_INTENT",
+                Intent i = new Intent("com.example.androidall.intent.SMS_INTENT",
                         Uri.parse(uri));
                 // put extra field
                 i.putExtra("from", "javacodegeeks");
                 startActivity(i);
             }
         });
-
-        // Use our custom SMS_INTENT intent with incorrect data
-        Button exception = (Button) findViewById(R.id.exception);
         exception.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String uri = "mailto:" + edit.getText().toString();
-                Intent i = new Intent("com.example.javacodegeeks.SMS_INTENT",
+                Intent i = new Intent("com.example.androidall.intent.SMS_INTENT",
                         Uri.parse(uri));
                 i.putExtra("from", "javacodegeeks");
                 startActivity(i);
 
             }
         });
-
     }
 
 }

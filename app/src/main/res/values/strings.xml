@@ -30,4 +30,12 @@
     <string name="add">Add a new Birthday</string>
     <string name="show">Show all Birthdays</string>
     <string name="delete">Delete all Birthdays</string>
+    <string name="activity">Activity</string>
+    <string name="animation">Animation</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="content_provider">Content Provider</string>
+    <string name="savedprefrences">Saved Prefrences</string>
+    <string name="sqlite">SQLite</string>
+    <string name="gridview">Gridview</string>
 </resources>

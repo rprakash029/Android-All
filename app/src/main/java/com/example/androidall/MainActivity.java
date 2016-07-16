@@ -1,8 +1,8 @@
 package com.example.androidall;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +17,10 @@ import com.example.androidall.activity.TransitionsActivity1;
 import com.example.androidall.animation.AnimationActivity;
 import com.example.androidall.bluetooth.BluetoothActivity;
 import com.example.androidall.broadcast_reciever.BroadcastActivity;
+import com.example.androidall.content_provider.BirthdayActivity;
+import com.example.androidall.gridview.GridViewActivity;
+import com.example.androidall.savedprefrences.SavedprefrencesActivity;
+import com.example.androidall.sqlite_database.SqliteActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String EMPTY_STRING = "";
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         RadioButton radioButton = (RadioButton) findViewById(id);
 
-        searchTypeTextView.setText(radioButton.getText());
+        searchTypeTextView.setText(radioButton.getText().toString());
 
     }
 
@@ -121,7 +125,22 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.broadcast_menu:
                 startActivity(new Intent(this, BroadcastActivity.class));
-break;
+                break;
+            case R.id.content_menu:
+                startActivity(new Intent(this, BirthdayActivity.class));
+                break;
+//            case R.id.intent_menu:
+//                startActivity(new Intent(this, IntentActivity.class));
+//                break;
+            case R.id.savedprefrences_menu:
+                startActivity(new Intent(this, SavedprefrencesActivity.class));
+                break;
+            case R.id.gridview_menu:
+                startActivity(new Intent(this, GridViewActivity.class));
+                break;
+            case R.id.sqlite_menu:
+                startActivity(new Intent(this, SqliteActivity.class));
+                break;
             default:
                 break;
         }
