@@ -19,6 +19,9 @@
     <item
         android:id="@+id/content_menu"
         android:title="@string/content_provider" />
+    <item
+        android:id="@+id/tab_menu"
+        android:title="@string/tab" />
 
     <!--<item-->
     <!--android:id="@+id/camera_menu"-->

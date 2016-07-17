@@ -16,7 +16,7 @@
 
     //broadcast
     <string name="sendMessage">Write a message to broadcast!</string>
-    <string name="myBroadcastIntent">Broadcast an Intent now...</string>
+    <string name="myBroadcastIntent">Broadcast an Intent now…</string>
 
     //intent
     <string name="number">Write a phone number</string>
@@ -38,4 +38,5 @@
     <string name="savedprefrences">Saved Prefrences</string>
     <string name="sqlite">SQLite</string>
     <string name="gridview">Gridview</string>
+    <string name="tab">Tabview</string>
 </resources>

@@ -21,6 +21,7 @@ import com.example.androidall.content_provider.BirthdayActivity;
 import com.example.androidall.gridview.GridViewActivity;
 import com.example.androidall.savedprefrences.SavedprefrencesActivity;
 import com.example.androidall.sqlite_database.SqliteActivity;
+import com.example.androidall.tabview.TabViewActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String EMPTY_STRING = "";
@@ -140,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.sqlite_menu:
                 startActivity(new Intent(this, SqliteActivity.class));
+                break;
+            case R.id.tab_menu:
+                startActivity(new Intent(this, TabViewActivity.class));
                 break;
             default:
                 break;

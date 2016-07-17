@@ -36,6 +36,7 @@
         <activity android:name=".camera.MyCamAppActivity" />
         <activity android:name=".intent.MySmsActivity" />
         <activity android:name=".content_provider.BirthdayActivity" />
+        <activity android:name=".tabview.TabViewActivity" />
         <activity
             android:name=".gridview.GridViewActivity"
             android:theme="@style/GridTheme" />
